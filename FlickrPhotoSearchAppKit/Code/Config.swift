@@ -47,4 +47,10 @@ public struct Config {
         static let credentialStorageKey = "CredentialsStorage"
         static let credentialsKey = "credentials"
     }
+
+    // MARK: Flickr
+
+    public struct Flickr {
+        static let APIKey = "2402177150b015fc655bb3de31940dc4"
+    }
 }

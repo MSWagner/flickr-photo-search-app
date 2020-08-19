@@ -35,23 +35,28 @@ class FlickrPhotoSearchViewController: UIViewController {
 
         setupStatefulViews()
         setupInitialViewState()
+
+        fetchImages(for: "Halloween")
     }
 
     // MARK: - Networking
 
-    private func loadData() {
-//        if let loadingViewModel = viewModel as? LoadDataActionAble {
-//            startLoading()
-//            requestDisposable = loadingViewModel.loadDataAction.apply().startWithResult { [weak self] result in
-//
-//                switch result {
-//                case .success:
-//                    self?.endLoading(animated: true, error: nil, completion: nil)
-//                case .failure(let error):
-//                    self?.endLoading(animated: true, error: error, completion: nil)
-//                }
-//            }
-//        }
+    private func fetchImages(for tag: String) {
+        startLoading()
+
+        viewModel.fetchImages(for: tag)
+            .startWithResult { [weak self] (result) -> Void in
+
+                switch result {
+                case .success: break
+                case .failure(let error):
+                    self?.endLoading(animated: true, error: error)
+                }
+            }
+    }
+
+    private func reloadImages() {
+        fetchImages(for: viewModel.currentTag)
     }
 }
 
@@ -65,12 +70,12 @@ extension FlickrPhotoSearchViewController: StatefulViewController {
 
         let errorView: ErrorStateView? = ErrorStateView.loadFromNib()
         self.errorView = errorView?.prepareForDisplay(with: Strings.Global.errorTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
-            self?.loadData()
+            self?.reloadImages()
         })
 
         let emptyView: EmptyStateView? = EmptyStateView.loadFromNib()
         self.emptyView = emptyView?.prepareForDisplay(with: Strings.Global.emptyTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
-            self?.loadData()
+            self?.reloadImages()
         })
     }
 

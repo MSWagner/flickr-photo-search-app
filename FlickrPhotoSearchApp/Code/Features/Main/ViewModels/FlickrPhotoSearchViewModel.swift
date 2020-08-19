@@ -7,8 +7,35 @@
 //
 
 import Foundation
+import ReactiveSwift
+import Fetch
+import FlickrPhotoSearchAppKit
 
 class FlickrPhotoSearchViewModel {
 
-    var hasContent: Bool = false
+    // MARK: - Properties
+
+    private let _images = MutableProperty<[Photo]?>(nil)
+    lazy var images: Property<[Photo]?> = {
+        return Property(_images)
+    }()
+
+    var hasContent: Bool {
+        return images.value != nil
+    }
+
+    private(set) var currentTag: String = "Halloween"
+
+    // MARK: - Networking
+
+    func fetchImages(for tag: String) -> SignalProducer<[Photo], FetchError> {
+        currentTag = tag
+
+        return API.Flickr
+            .fetchImages(for: tag)
+            .requestModel()
+            .on { [weak self] (images) in
+                self?._images.value = images
+            }
+    }
 }
