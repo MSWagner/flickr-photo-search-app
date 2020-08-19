@@ -1,0 +1,181 @@
+name: FlickrPhotoSearchApp
+options:
+  xcodeVersion: 11.0
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    DEVELOPMENT_TEAM: M8F9QH57A6
+    SWIFT_VERSION: "5.1"
+  configs:
+    Debug:
+      SWIFT_COMPILATION_MODE: "incremental"
+    Release:
+      SWIFT_COMPILATION_MODE: "wholemodule"
+attributes:
+  ORGANIZATIONNAME: Michael Wagner
+packages:
+  AlamofireImage:
+    url: https://github.com/Alamofire/AlamofireImage
+    majorVersion: "4.0"
+  Fetch:
+    url: https://github.com/allaboutapps/Fetch
+    majorVersion: "2.2"
+  SimpleButton:
+    url: https://github.com/allaboutapps/SimpleButton
+    majorVersion: "5.0"
+  StatefulViewController:
+    url: https://github.com/allaboutapps/StatefulViewController
+    majorVersion: "5.1"
+  DataSource:
+    url: https://github.com/allaboutapps/DataSource
+    majorVersion: "8.0"
+  KeychainAccess:
+    url: https://github.com/kishikawakatsumi/KeychainAccess
+    majorVersion: "3.2"
+  ReactiveSwift:
+    url: https://github.com/ReactiveCocoa/ReactiveSwift
+    majorVersion: "6.1"
+targets:
+  FlickrPhotoSearchApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "12.0"
+    configFiles:
+      Debug: FlickrPhotoSearchApp/SupportingFiles/Configurations/Configuration.xcconfig
+      Release: FlickrPhotoSearchApp/SupportingFiles/Configurations/Configuration.xcconfig
+    settings:
+      base:
+        PRODUCT_NAME: FlickrPhotoSearchApp
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+    info:
+      path: FlickrPhotoSearchApp/SupportingFiles/Info.plist
+      properties:
+        CFBundleDisplayName: FlickrPhotoSearchApp$(SERVER_ENVIRONMENT_SUFFIX)
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UILaunchStoryboardName: LaunchScreen
+        UIRequiredDeviceCapabilities: [armv7]
+        ITSAppUsesNonExemptEncryption: NO
+        LSRequiresIPhoneOS: YES
+        _Configuration: $(CONFIGURATION)
+        _ServerEnvironment: $(SERVER_ENVIRONMENT)
+    sources: 
+      - FlickrPhotoSearchApp
+    dependencies:
+      - target: FlickrPhotoSearchAppKit
+    postCompileScripts:
+      - script: |
+          if which swiftlint >/dev/null; then
+            swiftlint
+          else
+            echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+          fi
+        name: SwiftLint
+      - script: |
+          if which /usr/libexec/PlistBuddy >/dev/null; then
+            version="$MARKETING_VERSION"
+            build="$CURRENT_PROJECT_VERSION"
+            /usr/libexec/PlistBuddy "$SRCROOT/$PRODUCT_NAME/SupportingFiles/Settings.bundle/Root.plist" -c "set PreferenceSpecifiers:2:DefaultValue $version ($build)"
+          else
+          echo "warning: PlistBuddy not found"
+          fi
+  
+          if which /usr/local/bin/license-plist >/dev/null; then
+            /usr/local/bin/license-plist --output-path $PRODUCT_NAME/SupportingFiles/Settings.bundle --config-path $PRODUCT_NAME/SupportingFiles/license_plist.yml --package-path $PROJECT_FILE_PATH/project.xcworkspace/xcshareddata/swiftpm/Package.swift --suppress-opening-directory
+          else
+            echo "warning: license-plist not installed, download from https://github.com/mono0926/LicensePlist"
+          fi
+        name: Generate Licenses
+      - script: |
+          #case "${SERVER_ENVIRONMENT}" in
+          #
+          #"dev" )
+          #cp -r "${PROJECT_DIR}/GoogleService-Info-Dev.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist" ;;
+          #
+          #"staging" )
+          #cp -r "${PROJECT_DIR}/GoogleService-Info-Staging.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist" ;;
+          #
+          #"live" )
+          #cp -r "${PROJECT_DIR}/GoogleService-Info-Live.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist" ;;
+          #
+          #*)
+          #;;
+          #esac
+        name: Copy GoogleService-Info
+  FlickrPhotoSearchAppKit:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.0"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: eu.mws.flickrphotosearchappKit
+    info:
+      path: FlickrPhotoSearchAppKit/SupportingFiles/Info.plist
+      properties:
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+    sources: 
+      - FlickrPhotoSearchAppKit
+    dependencies:
+      - package: KeychainAccess
+      - package: ReactiveSwift
+      - package: DataSource
+      - package: Fetch
+      - package: SimpleButton
+      - package: StatefulViewController
+      - package: AlamofireImage
+schemes:
+  FlickrPhotoSearchApp dev:
+    build:
+      preActions:
+        - script: |
+            cp -f ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Dev.xcconfig ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Configuration.xcconfig 
+          settingsTarget: FlickrPhotoSearchApp
+      targets:
+        FlickrPhotoSearchApp: all
+        FlickrPhotoSearchAppKit: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release
+  FlickrPhotoSearchApp staging:
+    build:
+      preActions:
+        - script: |
+            cp -f ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Staging.xcconfig ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Configuration.xcconfig 
+          settingsTarget: FlickrPhotoSearchApp
+      targets:
+        FlickrPhotoSearchApp: all
+        FlickrPhotoSearchAppKit: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release
+  FlickrPhotoSearchApp live:
+    build:
+      preActions:
+        - script: |
+            cp -f ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Live.xcconfig ${PROJECT_DIR}/FlickrPhotoSearchApp/SupportingFiles/Configurations/Configuration.xcconfig 
+          settingsTarget: FlickrPhotoSearchApp
+      targets:
+        FlickrPhotoSearchApp: all
+        FlickrPhotoSearchAppKit: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release
