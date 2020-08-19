@@ -10,4 +10,5 @@ import Foundation
 
 class FlickrPhotoSearchViewModel {
 
+    var hasContent: Bool = false
 }
