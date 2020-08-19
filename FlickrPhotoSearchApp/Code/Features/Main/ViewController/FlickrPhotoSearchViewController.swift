@@ -8,6 +8,8 @@
 
 import UIKit
 import StatefulViewController
+import DataSource
+import ReactiveSwift
 import FlickrPhotoSearchAppKit
 
 class FlickrPhotoSearchViewController: UIViewController {
@@ -19,6 +21,17 @@ class FlickrPhotoSearchViewController: UIViewController {
     // MARK: - Properties
 
     private var viewModel: FlickrPhotoSearchViewModel!
+
+    private var disposableBag = CompositeDisposable()
+
+    // MARK: - DataSource
+
+    private lazy var dataSource: DataSource = {
+        return DataSource(cellDescriptors: [
+            ImageTitleCell.cellDescriptor
+                .height { 60 }
+        ])
+    }()
 
     // MARK: - LifeCycle
 
@@ -33,10 +46,36 @@ class FlickrPhotoSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupViews()
         setupStatefulViews()
+        setupBindings()
         setupInitialViewState()
 
         fetchImages(for: "Halloween")
+    }
+
+    // MARK: - Setup
+
+    private func setupViews() {
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        tableView.tableFooterView = UIView()
+    }
+
+    private func setupBindings() {
+        disposableBag += viewModel.images.producer.startWithValues { [weak self] images in
+            guard let self = self, let images = images else { return }
+
+            self.setupDataSource(images: images)
+        }
+    }
+
+    private func setupDataSource(images: [Photo]) {
+        let rows = images.map { $0.row }
+        let section = Section(rows: rows)
+
+        dataSource.sections = [section]
+        dataSource.reloadData(tableView, animated: true)
     }
 
     // MARK: - Networking
@@ -48,7 +87,8 @@ class FlickrPhotoSearchViewController: UIViewController {
             .startWithResult { [weak self] (result) -> Void in
 
                 switch result {
-                case .success: break
+                case .success:
+                    self?.endLoading(animated: true, error: nil)
                 case .failure(let error):
                     self?.endLoading(animated: true, error: error)
                 }
