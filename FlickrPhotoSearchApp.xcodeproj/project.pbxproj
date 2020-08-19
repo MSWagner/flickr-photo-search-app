@@ -32,6 +32,7 @@
 		D018D109EE1C2698CCE79036 /* Fetch in Frameworks */ = {isa = PBXBuildFile; productRef = 4F505C494163E6ECFB5C2239 /* Fetch */; };
 		D31C66EAA16CF92DA224F4AB /* ReactiveSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332F3DE32DFF449C4E17B71 /* ReactiveSwift+Extensions.swift */; };
 		D3B7936724ED91580074964C /* FlickrPhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7936624ED91580074964C /* FlickrPhotoSearchViewController.swift */; };
+		D3B7936924ED96320074964C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7936824ED96320074964C /* Assets.swift */; };
 		DD1778C3D183317F9B9AD0CA /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D512F076BC52BF296C9017B4 /* NavigationCoordinator.swift */; };
 		E10C0DF31320D62A6DF4B895 /* StatefulViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 869140211D097CFFC0084C00 /* StatefulViewController */; };
 		ED804B289739DC4F03D5E72C /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 75640C37BBDB0A5E1BF843B3 /* ReactiveSwift */; };
@@ -100,6 +101,7 @@
 		CDF66DFAF3F69D0B4BAC552B /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		CE757A1A8B0588956FD8256C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D3B7936624ED91580074964C /* FlickrPhotoSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoSearchViewController.swift; sourceTree = "<group>"; };
+		D3B7936824ED96320074964C /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		D512F076BC52BF296C9017B4 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		E770969159BFA8FABD6A1EE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				E770969159BFA8FABD6A1EE7 /* Assets.xcassets */,
+				D3B7936824ED96320074964C /* Assets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C54823B4A860217C2C11467 /* AppCoordinator.swift in Sources */,
+				D3B7936924ED96320074964C /* Assets.swift in Sources */,
 				F020D385B3F9568F4F12226E /* AppDelegate.swift in Sources */,
 				46F3E81D880DC7287AF9AEB2 /* Appearance.swift in Sources */,
 				4B547EE7B4044532DB2506E0 /* Coordinator.swift in Sources */,
