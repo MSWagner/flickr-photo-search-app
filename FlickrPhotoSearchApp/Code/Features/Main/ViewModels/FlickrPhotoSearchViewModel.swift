@@ -20,16 +20,23 @@ class FlickrPhotoSearchViewModel {
         return Property(_images)
     }()
 
+    private var _currentTag = MutableProperty<String>("Halloween")
+    lazy var currentTag: Property<String> = {
+        return Property(_currentTag)
+    }()
+
+    lazy var title: Property<String> = {
+        return Property(_currentTag).map { "#\($0)" }
+    }()
+
     var hasContent: Bool {
         return images.value != nil
     }
 
-    private(set) var currentTag: String = "Halloween"
-
     // MARK: - Networking
 
     func fetchImages(for tag: String) -> SignalProducer<[Photo], FetchError> {
-        currentTag = tag
+        _currentTag.value = tag
 
         return API.Flickr
             .fetchImages(for: tag)

@@ -51,7 +51,7 @@ class FlickrPhotoSearchViewController: UIViewController {
         setupBindings()
         setupInitialViewState()
 
-        fetchImages(for: "Halloween")
+        reloadImages()
     }
 
     // MARK: - Setup
@@ -67,6 +67,10 @@ class FlickrPhotoSearchViewController: UIViewController {
             guard let self = self, let images = images else { return }
 
             self.setupDataSource(images: images)
+        }
+
+        disposableBag += viewModel.title.producer.startWithValues { [weak self] title in
+            self?.title = title
         }
     }
 
@@ -96,7 +100,7 @@ class FlickrPhotoSearchViewController: UIViewController {
     }
 
     private func reloadImages() {
-        fetchImages(for: viewModel.currentTag)
+        fetchImages(for: viewModel.currentTag.value)
     }
 }
 
