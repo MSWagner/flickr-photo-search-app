@@ -14,6 +14,8 @@ class NavigationCoordinator: Coordinator {
     init(navigationController: UINavigationController = UINavigationController()) {
         self.pushedViewControllers = WeakArray([])
         self.navigationController = navigationController
+
+        self.navigationController.navigationBar.barStyle = .black
         
         super.init(rootViewController: navigationController)
         
