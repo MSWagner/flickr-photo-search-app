@@ -24,6 +24,8 @@ class FlickrPhotoSearchViewController: UIViewController {
 
     private var disposableBag = CompositeDisposable()
 
+    private let searchController = UISearchController(searchResultsController: nil)
+
     // MARK: - DataSource
 
     private lazy var dataSource: DataSource = {
@@ -51,7 +53,7 @@ class FlickrPhotoSearchViewController: UIViewController {
         setupBindings()
         setupInitialViewState()
 
-        reloadImages()
+        fetchImages(for: viewModel.currentTag.value, force: true)
     }
 
     // MARK: - Setup
@@ -60,6 +62,35 @@ class FlickrPhotoSearchViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         tableView.tableFooterView = UIView()
+
+        setupNotSearchingButtons()
+    }
+
+    private func setupNotSearchingButtons() {
+        navigationItem.titleView = nil
+        searchController.searchBar.text = nil
+
+        let newSearchButton = UIBarButtonItem(title: Strings.NavigationBar.newSearch, style: .done, target: self, action: #selector(setupSearchBar))
+        let refreshButton = UIBarButtonItem(title: Strings.NavigationBar.refresh, style: .done, target: self, action: #selector(reloadImages))
+
+        navigationItem.leftBarButtonItem = newSearchButton
+        navigationItem.rightBarButtonItem = refreshButton
+    }
+
+    @objc private func setupSearchBar() {
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+
+        searchController.searchBar.delegate = self
+
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.searchBarStyle = .minimal
+
+        navigationItem.titleView = searchController.searchBar
+
+        definesPresentationContext = true
+
+        navigationItem.titleView?.becomeFirstResponder()
     }
 
     private func setupBindings() {
@@ -84,7 +115,10 @@ class FlickrPhotoSearchViewController: UIViewController {
 
     // MARK: - Networking
 
-    private func fetchImages(for tag: String) {
+    private func fetchImages(for tag: String, force: Bool = false) {
+        guard tag != viewModel.currentTag.value || force else { return }
+
+        viewModel.resetImages()
         startLoading()
 
         viewModel.fetchImages(for: tag)
@@ -99,7 +133,7 @@ class FlickrPhotoSearchViewController: UIViewController {
             }
     }
 
-    private func reloadImages() {
+    @objc private func reloadImages() {
         fetchImages(for: viewModel.currentTag.value)
     }
 }
@@ -125,5 +159,22 @@ extension FlickrPhotoSearchViewController: StatefulViewController {
 
     func hasContent() -> Bool {
         return viewModel.hasContent
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension FlickrPhotoSearchViewController: UISearchBarDelegate {
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        setupNotSearchingButtons()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let newTag = searchBar.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines), !newTag.isEmpty {
+            fetchImages(for: newTag)
+        }
+
+        searchController.isActive = false
     }
 }

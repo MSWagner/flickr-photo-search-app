@@ -45,4 +45,10 @@ class FlickrPhotoSearchViewModel {
                 self?._images.value = images
             }
     }
+
+    // MARK: - Reset
+
+    func resetImages() {
+        _images.value = nil
+    }
 }

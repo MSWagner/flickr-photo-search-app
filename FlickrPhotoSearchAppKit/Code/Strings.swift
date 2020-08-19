@@ -11,6 +11,13 @@ import Foundation
 // swiftlint:disable all
 public class Strings {
 
+    public struct NavigationBar {
+        /// Refresh
+        public static let refresh = Strings.localized("navigation_bar_refresh", value: "Refresh")
+        /// New Search
+        public static let newSearch = Strings.localized("navigation_bar_new_search", value: "New Search")
+    }
+
     public struct Global {
         /// Cancel
         public static let cancel = Strings.localized("global_cancel", value: "Cancel")
