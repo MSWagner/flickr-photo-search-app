@@ -16,7 +16,15 @@ public struct Config {
             }
         }
 
-        static let stubRequests = true
+        static var stubRequests: Bool {
+            #if DEBUG
+            if CommandLine.arguments.contains("-testing") {
+                return true
+            }
+            #endif
+
+            return false
+        }
         static var timeout: TimeInterval = 120.0
 
         static var verboseLogging: Bool {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1160"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "D457C8B955C9601BECDA57A9"
-                     BuildableName = "FlickrSearch.app"
+                     BuildableName = "FlickrSearch-dev.app"
                      BlueprintName = "FlickrPhotoSearchApp"
                      ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
                   </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D457C8B955C9601BECDA57A9"
-               BuildableName = "FlickrSearch.app"
+               BuildableName = "FlickrSearch-dev.app"
                BlueprintName = "FlickrPhotoSearchApp"
                ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
             </BuildableReference>
@@ -63,12 +63,32 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D457C8B955C9601BECDA57A9"
-            BuildableName = "FlickrSearch.app"
+            BuildableName = "FlickrSearch-dev.app"
             BlueprintName = "FlickrPhotoSearchApp"
             ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3C9027D24F0406800BA7EBE"
+               BuildableName = "FlickrSearch-devUITests.xctest"
+               BlueprintName = "FlickrSearch-devUITests"
+               ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3C9028B24F040CA00BA7EBE"
+               BuildableName = "FlickrPhotoSearchAppUITests.xctest"
+               BlueprintName = "FlickrPhotoSearchAppUITests"
+               ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -86,7 +106,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D457C8B955C9601BECDA57A9"
-            BuildableName = "FlickrSearch.app"
+            BuildableName = "FlickrSearch-dev.app"
             BlueprintName = "FlickrPhotoSearchApp"
             ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
          </BuildableReference>
@@ -103,7 +123,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D457C8B955C9601BECDA57A9"
-            BuildableName = "FlickrSearch.app"
+            BuildableName = "FlickrSearch-dev.app"
             BlueprintName = "FlickrPhotoSearchApp"
             ReferencedContainer = "container:FlickrPhotoSearchApp.xcodeproj">
          </BuildableReference>

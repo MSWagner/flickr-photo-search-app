@@ -53,7 +53,7 @@ class FlickrPhotoSearchViewController: UIViewController {
         setupBindings()
         setupInitialViewState()
 
-        fetchImages(for: viewModel.currentTag.value, force: true)
+        reloadImages()
     }
 
     // MARK: - Setup
@@ -63,10 +63,10 @@ class FlickrPhotoSearchViewController: UIViewController {
         tableView.delegate = dataSource
         tableView.tableFooterView = UIView()
 
-        setupNotSearchingButtons()
+        setupNotSearchingStateButtons()
     }
 
-    private func setupNotSearchingButtons() {
+    private func setupNotSearchingStateButtons() {
         navigationItem.titleView = nil
         searchController.searchBar.text = nil
 
@@ -75,6 +75,10 @@ class FlickrPhotoSearchViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = newSearchButton
         navigationItem.rightBarButtonItem = refreshButton
+
+        /// UITests
+        newSearchButton.accessibilityIdentifier = "searchButton"
+        refreshButton.accessibilityIdentifier = "refreshButton"
     }
 
     @objc private func setupSearchBar() {
@@ -134,7 +138,7 @@ class FlickrPhotoSearchViewController: UIViewController {
     }
 
     @objc private func reloadImages() {
-        fetchImages(for: viewModel.currentTag.value)
+        fetchImages(for: viewModel.currentTag.value, force: true)
     }
 }
 
@@ -167,7 +171,7 @@ extension FlickrPhotoSearchViewController: StatefulViewController {
 extension FlickrPhotoSearchViewController: UISearchBarDelegate {
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        setupNotSearchingButtons()
+        setupNotSearchingStateButtons()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

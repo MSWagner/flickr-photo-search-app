@@ -11,9 +11,9 @@ import StatefulViewController
 
 class LoadingStateView: UIView, StatefulPlaceholderView {
     
-    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
     
-    @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
 
     private var didPressClose: (() -> Void)?
 
@@ -21,10 +21,16 @@ class LoadingStateView: UIView, StatefulPlaceholderView {
     
     @discardableResult
     func prepareForDisplay(with title: String, insets: UIEdgeInsets = .zero, didPressClose: (() -> Void)? = nil) -> LoadingStateView {
+
         titleLabel.text = title
         loadingIndicator.startAnimating()
         viewInsets = insets
+
         self.didPressClose = didPressClose
+
+        /// UITests
+        titleLabel.accessibilityIdentifier = "loadingView.title"
+        loadingIndicator.accessibilityValue = "loadingView.indicator"
 
         return self
     }

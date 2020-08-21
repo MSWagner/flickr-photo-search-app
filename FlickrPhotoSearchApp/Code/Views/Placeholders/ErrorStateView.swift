@@ -11,8 +11,8 @@ import StatefulViewController
 
 class ErrorStateView: UIView, StatefulPlaceholderView {
     
-    @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var retryLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var retryLabel: UILabel!
 
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(retryButtonPressed))
@@ -26,10 +26,13 @@ class ErrorStateView: UIView, StatefulPlaceholderView {
     
     @discardableResult
     func prepareForDisplay(with title: String, retryTitle: String? = nil, insets: UIEdgeInsets = .zero, didPressClose: (() -> Void)? = nil, retryClosure: (() -> Void)? = nil) -> ErrorStateView {
+
         titleLabel.text = title
         retryLabel.text = retryTitle
         retryLabel.isHidden = retryTitle == nil
+
         self.retryClosure = retryClosure
+
         viewInsets = insets
 
         self.didPressClose = didPressClose
@@ -37,7 +40,10 @@ class ErrorStateView: UIView, StatefulPlaceholderView {
         if tapRecognizer.view == nil {
             addGestureRecognizer(tapRecognizer)
         }
-        
+
+        /// UITests
+        accessibilityIdentifier = "errorView"
+
         return self
     }
     

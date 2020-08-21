@@ -12,7 +12,7 @@
         <!--Flickr Photo Search View Controller-->
         <scene sceneID="KmX-Xs-4gI">
             <objects>
-                <viewController storyboardIdentifier="FlickrPhotoSearchViewController" id="dEf-9t-tpc" customClass="FlickrPhotoSearchViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FlickrPhotoSearchViewController" id="dEf-9t-tpc" customClass="FlickrPhotoSearchViewController" customModule="FlickrPhotoSearchApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Db0-sn-I1F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
     </scenes>
     <resources>
         <namedColor name="Background">
-            <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -27,7 +27,9 @@ public class API {
                     "extras": "url_sq,url_o",
                     "tags": tag
                 ],
-                rootKeys: ["photos", "photo"]
+                rootKeys: ["photos", "photo"],
+                shouldStub: Config.API.stubRequests,
+                stub: StubResponse(statusCode: 200, data: Stub(fileName: "FlickPhotoResponseHalloween").jsonData(), delay: 5)
             )
         }
     }

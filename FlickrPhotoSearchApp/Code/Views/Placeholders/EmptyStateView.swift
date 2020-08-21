@@ -11,8 +11,8 @@ import StatefulViewController
 
 class EmptyStateView: UIView, StatefulPlaceholderView {
     
-    @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var retryLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var retryLabel: UILabel!
 
     private lazy var tapRecognizer: UITapGestureRecognizer = {
         return UITapGestureRecognizer(target: self, action: #selector(retryButtonPressed))
@@ -26,9 +26,11 @@ class EmptyStateView: UIView, StatefulPlaceholderView {
 
     @discardableResult
     func prepareForDisplay(with title: String, retryTitle: String? = nil, insets: UIEdgeInsets = .zero, didPressClose: (() -> Void)? = nil, retryClosure: (() -> Void)? = nil) -> EmptyStateView {
+
         titleLabel.text = title
         retryLabel.text = retryTitle
         retryLabel.isHidden = retryTitle == nil
+
         viewInsets = insets
 
         self.retryClosure = retryClosure
@@ -38,7 +40,11 @@ class EmptyStateView: UIView, StatefulPlaceholderView {
         if tapRecognizer.view == nil {
             addGestureRecognizer(tapRecognizer)
         }
-        
+
+        /// UITests
+        titleLabel.accessibilityValue = "emptyView.title"
+        retryLabel.accessibilityValue = "emptyView.retry"
+
         return self
     }
     
