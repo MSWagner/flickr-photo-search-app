@@ -12,7 +12,7 @@ extension Array where Element == Photo {
 
     public func sorted() -> [Photo] {
         return self.sorted { (firstPhoto, secondPhoto) -> Bool in
-            return firstPhoto.title < secondPhoto.title
+            return firstPhoto.title.lowercased() < secondPhoto.title.lowercased()
         }
     }
 }
