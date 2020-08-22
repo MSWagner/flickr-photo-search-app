@@ -13,7 +13,6 @@
 		2DFFEBECB408B3C4C7FB8158 /* DataSource in Frameworks */ = {isa = PBXBuildFile; productRef = 6594E8EFECD75546068B5428 /* DataSource */; };
 		2F774D9B47C4D890ACBC22C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2EE7525729F433F58D4B62D /* Main.storyboard */; };
 		406BCEA131E7DF7152CA4EC2 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A04102790246B27D2E1BDF /* Formatters.swift */; };
-		443EB5BFC39C48114C9C14F2 /* SimpleButton in Frameworks */ = {isa = PBXBuildFile; productRef = BB010D520E48810C3063EDB5 /* SimpleButton */; };
 		4572DEC4F955B1C161672F7E /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E46CC36B050F09E3A74B980 /* Weak.swift */; };
 		46F3E81D880DC7287AF9AEB2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E6687681B7B9323DF14FA /* Appearance.swift */; };
 		4B547EE7B4044532DB2506E0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8A4880322E7EE90E746FBD /* Coordinator.swift */; };
@@ -175,7 +174,6 @@
 				ED804B289739DC4F03D5E72C /* ReactiveSwift in Frameworks */,
 				2DFFEBECB408B3C4C7FB8158 /* DataSource in Frameworks */,
 				D018D109EE1C2698CCE79036 /* Fetch in Frameworks */,
-				443EB5BFC39C48114C9C14F2 /* SimpleButton in Frameworks */,
 				E10C0DF31320D62A6DF4B895 /* StatefulViewController in Frameworks */,
 				979797D36F7250CB54036659 /* AlamofireImage in Frameworks */,
 			);
@@ -517,7 +515,6 @@
 				75640C37BBDB0A5E1BF843B3 /* ReactiveSwift */,
 				6594E8EFECD75546068B5428 /* DataSource */,
 				4F505C494163E6ECFB5C2239 /* Fetch */,
-				BB010D520E48810C3063EDB5 /* SimpleButton */,
 				869140211D097CFFC0084C00 /* StatefulViewController */,
 				DCB54F849DAEF08B9BF67C3F /* AlamofireImage */,
 			);
@@ -618,7 +615,6 @@
 				EA944570BC0E43B81775BA45 /* XCRemoteSwiftPackageReference "DataSource" */,
 				D11437EE73B2E5E3EC5DD594 /* XCRemoteSwiftPackageReference "Fetch" */,
 				9D5C95EE03101972E21B5B24 /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
-				8F318D06C723661DA0DE29DA /* XCRemoteSwiftPackageReference "SimpleButton" */,
 				CC5B3314A05493AA03B09800 /* XCRemoteSwiftPackageReference "StatefulViewController" */,
 			);
 			projectDirPath = "";
@@ -1196,14 +1192,6 @@
 				minimumVersion = 4.0;
 			};
 		};
-		8F318D06C723661DA0DE29DA /* XCRemoteSwiftPackageReference "SimpleButton" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/allaboutapps/SimpleButton";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0;
-			};
-		};
 		9D5C95EE03101972E21B5B24 /* XCRemoteSwiftPackageReference "ReactiveSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveSwift";
@@ -1258,11 +1246,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC5B3314A05493AA03B09800 /* XCRemoteSwiftPackageReference "StatefulViewController" */;
 			productName = StatefulViewController;
-		};
-		BB010D520E48810C3063EDB5 /* SimpleButton */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8F318D06C723661DA0DE29DA /* XCRemoteSwiftPackageReference "SimpleButton" */;
-			productName = SimpleButton;
 		};
 		DCB54F849DAEF08B9BF67C3F /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;

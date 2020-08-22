@@ -56,15 +56,6 @@
         }
       },
       {
-        "package": "SimpleButton",
-        "repositoryURL": "https://github.com/allaboutapps/SimpleButton",
-        "state": {
-          "branch": null,
-          "revision": "41b5873d6ed87d00d4407a0023dca1978aef3833",
-          "version": "5.0.0"
-        }
-      },
-      {
         "package": "StatefulViewController",
         "repositoryURL": "https://github.com/allaboutapps/StatefulViewController",
         "state": {
