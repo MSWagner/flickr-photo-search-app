@@ -27,6 +27,7 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        print(app.debugDescription)
     }
 
     // MARK: - Tests
@@ -66,18 +67,15 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
         /// Search
         app.buttons["searchButton"].tap()
 
-        XCTAssertTrue(app.searchFields.firstMatch.waitForExistence(timeout: 10))
+        XCTAssertTrue(app.searchFields["searchTextView"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10))
 
-        app.keys["A"].tap()
-        app.keys["u"].tap()
-        app.keys["s"].tap()
-        app.keys["t"].tap()
-        app.keys["r"].tap()
-        app.keys["i"].tap()
-        app.keys["a"].tap()
+        typeOnKeyboard(keys: "Austria")
 
-        app.keyboards.buttons["Search"].tap()
+        XCTAssertTrue(app.keyboards.buttons["Search"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.keyboards.buttons["Search"].isEnabled, "Search button should be enabled")
+
+        app.keyboards.buttons["Search"].forceTapElement()
 
         /// Start Loading
         isLoadingViewVisibleTest()
@@ -87,7 +85,7 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
         isNavbarInDefaultStateTest()
     }
 
-    // MARK: - Reusable Functions
+    // MARK: - Navbar
 
     func isNavbarInDefaultStateTest() {
         XCTAssertEqual(app.navigationBars.buttons.count, 2)
@@ -124,6 +122,36 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
         XCTAssertEqual(app.tables.cells.count, 23, "23 images should be visible from the stub Austria json")
     }
 
+    // MARK: - Keyboard Helper
+
+    func typeOnKeyboard(keys: String) {
+        guard !keys.isEmpty else { return }
+
+        for key in keys {
+            typeOnKeyboard(key: String(key))
+        }
+    }
+
+    func typeOnKeyboard(key: String) {
+        guard !key.isEmpty  else { return }
+
+        if app.keys[key].exists {
+            app.keys[key].forceTapElement()
+
+            return
+        }
+
+        var key = key.uppercased()
+
+        var keyExist = app.keys[key].exists
+        if !keyExist {
+            key = key.lowercased()
+            keyExist = app.keys[key.lowercased()].exists
+        }
+
+        app.keys[key].forceTapElement()
+    }
+
     // MARK: - Performane
 
     func testLaunchPerformance() throws {
@@ -132,6 +160,21 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
             measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
                 XCUIApplication().launch()
             }
+        }
+    }
+}
+
+// MARK: - ForceTap
+
+extension XCUIElement {
+
+    /// Workaround for CI Testing with Github Actions (keys not tapable)
+    func forceTapElement() {
+        if self.isHittable {
+            self.tap()
+        } else {
+            let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx: 0.0, dy: 0.0))
+            coordinate.tap()
         }
     }
 }
