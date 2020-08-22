@@ -6,4 +6,4 @@
 
 ---
 
-Searching for flickr images with a tag.
+Searching for flickr images with a tag and show the page in a tableView. Includes UI tests for refreshing and searching.
