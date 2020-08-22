@@ -1,6 +1,5 @@
 # FlickrPhotoSearchApp (Research Project)
 
----
 ![Master](https://github.com/MSWagner/flickr-photo-search-app/workflows/Master/badge.svg?branch=master) ![Develop](https://github.com/MSWagner/flickr-photo-search-app/workflows/Develop/badge.svg?branch=develop)
 
 ⚡️ Swift: 5.2 📱 iOS 12.0 🌎 [API Docs](https://www.flickr.com/services/api/)
