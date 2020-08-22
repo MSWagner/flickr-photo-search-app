@@ -90,10 +90,10 @@ class FlickrPhotoSearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.searchBarStyle = .minimal
 
-        navigationItem.titleView = searchController.searchBar
-
         searchController.searchBar.accessibilityTraits = .searchField
+        searchController.searchBar.accessibilityIdentifier = "searchTextView"
 
+        navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
 
         navigationItem.titleView?.becomeFirstResponder()
