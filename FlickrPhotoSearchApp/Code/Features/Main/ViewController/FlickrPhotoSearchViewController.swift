@@ -105,6 +105,11 @@ class FlickrPhotoSearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.searchBarStyle = .minimal
 
+        searchController.searchBar.setupSearchBarColors(customBackgroundColor: .white,
+                                                        customTextColor: .black,
+                                                        customPlacerholderColor: .gray)
+
+        /// UITests
         searchController.searchBar.accessibilityTraits = .searchField
         searchController.searchBar.accessibilityIdentifier = "searchTextView"
 
