@@ -29,7 +29,7 @@ public class API {
                 ],
                 rootKeys: ["photos", "photo"],
                 shouldStub: Config.API.stubRequests,
-                stub: StubResponse(statusCode: 200, data: Stub(fileName: "FlickPhotoResponseHalloween").jsonData(), delay: 5)
+                stub: StubResponse(statusCode: 200, data: Stub(fileName: tag).jsonData(), delay: 10)
             )
         }
     }

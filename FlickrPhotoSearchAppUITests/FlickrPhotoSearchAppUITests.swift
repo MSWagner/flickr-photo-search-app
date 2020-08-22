@@ -36,23 +36,60 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
         app.launch()
 
         /// Navbar
-        isNavbarInNotSearchState()
+        isNavbarInDefaultStateTest()
 
         /// Start Loading
-        hasAppStartedLoading()
+        isLoadingViewVisibleTest()
 
         /// End Loading
-        hasAppEndLoadingAndShowingCells()
+        areHalloweenCellsVisibleTest()
 
         /// Refresh
         app.buttons["refreshButton"].tap()
-        hasAppStartedLoading()
-        hasAppEndLoadingAndShowingCells()
+        isLoadingViewVisibleTest()
+        areHalloweenCellsVisibleTest()
+    }
+
+    func testSearch() throws {
+        // UI tests must launch the application that they test.
+        app.launch()
+
+        /// Navbar
+        isNavbarInDefaultStateTest()
+
+        /// Start Loading
+        isLoadingViewVisibleTest()
+
+        /// End Loading
+        areHalloweenCellsVisibleTest()
+
+        /// Search
+        app.buttons["searchButton"].tap()
+
+        XCTAssertTrue(app.searchFields.firstMatch.waitForExistence(timeout: 10))
+        XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10))
+
+        app.keys["A"].tap()
+        app.keys["u"].tap()
+        app.keys["s"].tap()
+        app.keys["t"].tap()
+        app.keys["r"].tap()
+        app.keys["i"].tap()
+        app.keys["a"].tap()
+
+        app.keyboards.buttons["Search"].tap()
+
+        /// Start Loading
+        isLoadingViewVisibleTest()
+
+        /// End Loading
+        areAustriaCellsVisibleTest()
+        isNavbarInDefaultStateTest()
     }
 
     // MARK: - Reusable Functions
 
-    func isNavbarInNotSearchState() {
+    func isNavbarInDefaultStateTest() {
         XCTAssertEqual(app.navigationBars.buttons.count, 2)
 
         let searchButton = app.buttons["searchButton"]
@@ -62,35 +99,29 @@ class FlickrPhotoSearchAppUITests: XCTestCase {
         XCTAssertTrue(refreshButton.waitForExistence(timeout: 1))
     }
 
-    func hasAppStartedLoading() {
-        let onlyLoadingViewVisible = isLoadingViewVisible(timeout: 5) && isEmptyViewVisible() && app.tables.cells.count == 0
-        XCTAssertFalse(onlyLoadingViewVisible, "Only the loading view should be visible")
-    }
+    // MARK: - Loading
 
-    func hasAppEndLoadingAndShowingCells() {
-        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 5))
-        XCTAssertEqual(app.tables.cells.count, 25, "25 images should be visible from the stub json")
-    }
-
-    func isLoadingViewVisible(timeout: TimeInterval? = nil) -> Bool {
+    func isLoadingViewVisibleTest() {
         let titleLabel = app.staticTexts["loadingView.title"]
 
-        if let timeout = timeout {
-            return titleLabel.waitForExistence(timeout: timeout) && app.descendants(matching: .activityIndicator).element.exists
-        }
+        let onlyLoadingViewVisible = titleLabel.waitForExistence(timeout: 10)
+            && app.descendants(matching: .activityIndicator).element.exists
 
-        return titleLabel.exists && app.descendants(matching: .activityIndicator).element.exists
+        XCTAssertTrue(onlyLoadingViewVisible, "Loading view should be visible")
     }
 
-    func isEmptyViewVisible(timeout: TimeInterval? = nil) -> Bool {
-        let titleLabel = app.staticTexts["emptyView.title"]
-        let retryLabel = app.staticTexts["emptyView.retry"]
+    func areHalloweenCellsVisibleTest() {
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
+        XCTAssertEqual(app.tables.cells.count, 25, "25 images should be visible from the stub Halloween json")
+    }
 
-        if let timeout = timeout {
-            return titleLabel.waitForExistence(timeout: timeout) && retryLabel.exists
-        }
+    func areAustriaCellsVisibleTest() {
+        let exists = NSPredicate(format: "count == 23")
+        expectation(for: exists, evaluatedWith: app.tables.cells, handler: nil)
+        waitForExpectations(timeout: 15, handler: nil)
 
-        return titleLabel.exists && retryLabel.exists
+        XCTAssertTrue(app.tables.cells.firstMatch.waitForExistence(timeout: 10))
+        XCTAssertEqual(app.tables.cells.count, 23, "23 images should be visible from the stub Austria json")
     }
 
     // MARK: - Performane

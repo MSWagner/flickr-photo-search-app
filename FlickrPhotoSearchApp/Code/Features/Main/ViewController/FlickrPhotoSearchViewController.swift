@@ -92,6 +92,8 @@ class FlickrPhotoSearchViewController: UIViewController {
 
         navigationItem.titleView = searchController.searchBar
 
+        searchController.searchBar.accessibilityTraits = .searchField
+
         definesPresentationContext = true
 
         navigationItem.titleView?.becomeFirstResponder()
