@@ -18,6 +18,11 @@ public class Strings {
         public static let newSearch = Strings.localized("navigation_bar_new_search", value: "New Search")
     }
 
+    public struct Buttons {
+        /// Sorting
+        public static let sorting = Strings.localized("buttons_sorting", value: "Sorting with titles")
+    }
+
     public struct Global {
         /// Cancel
         public static let cancel = Strings.localized("global_cancel", value: "Cancel")

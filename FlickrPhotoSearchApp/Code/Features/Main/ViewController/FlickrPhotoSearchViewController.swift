@@ -18,6 +18,8 @@ class FlickrPhotoSearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var sortingButton: UIButton!
+
     // MARK: - Properties
 
     private var viewModel: FlickrPhotoSearchViewModel!
@@ -56,12 +58,25 @@ class FlickrPhotoSearchViewController: UIViewController {
         reloadImages()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let bottomInset = sortingButton.isHidden ? 0 : view.safeAreaInsets.bottom + sortingButton.frame.height
+        let contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: bottomInset, right: 0.0)
+        
+        tableView.contentInset = contentInsets
+    }
+
     // MARK: - Setup
 
     private func setupViews() {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         tableView.tableFooterView = UIView()
+
+        sortingButton.isHidden = !viewModel.hasContent
+        sortingButton.layer.cornerRadius = sortingButton.bounds.height / 2
+        sortingButton.setTitle(Strings.Buttons.sorting, for: .normal)
 
         setupNotSearchingStateButtons()
     }
@@ -109,6 +124,11 @@ class FlickrPhotoSearchViewController: UIViewController {
         disposableBag += viewModel.title.producer.startWithValues { [weak self] title in
             self?.title = title
         }
+
+        disposableBag += viewModel.canSort.producer.startWithValues { [weak self] (canSort) in
+            self?.sortingButton.isHidden = !canSort
+            self?.view.setNeedsLayout()
+        }
     }
 
     private func setupDataSource(images: [Photo]) {
@@ -139,8 +159,14 @@ class FlickrPhotoSearchViewController: UIViewController {
             }
     }
 
+    // MARK: - Actions
+
     @objc private func reloadImages() {
         fetchImages(for: viewModel.currentTag.value, force: true)
+    }
+
+    @IBAction func onSortingButton(_ sender: Any) {
+        viewModel.sortPhotos()
     }
 }
 

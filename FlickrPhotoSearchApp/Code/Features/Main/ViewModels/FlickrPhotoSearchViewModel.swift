@@ -29,14 +29,26 @@ class FlickrPhotoSearchViewModel {
         return Property(_currentTag).map { "#\($0)" }
     }()
 
+    private var _isSorted = MutableProperty<Bool>(false)
+    lazy var canSort: Property<Bool> = {
+        return Property
+            .combineLatest(_images, _isSorted)
+            .map { (images, isSorted) -> Bool in
+                let hasContent = images != nil &&  images!.count > 0
+
+                return hasContent && !isSorted
+            }
+    }()
+
     var hasContent: Bool {
-        return images.value != nil
+        return images.value != nil &&  images.value!.count > 0
     }
 
     // MARK: - Networking
 
     func fetchImages(for tag: String) -> SignalProducer<[Photo], FetchError> {
         _currentTag.value = tag
+        _isSorted.value = false
 
         return API.Flickr
             .fetchImages(for: tag)
@@ -44,6 +56,13 @@ class FlickrPhotoSearchViewModel {
             .on { [weak self] (images) in
                 self?._images.value = images
             }
+    }
+
+    func sortPhotos() {
+        if let images = images.value {
+            _images.value = images.sorted()
+            _isSorted.value = true
+        }
     }
 
     // MARK: - Reset
