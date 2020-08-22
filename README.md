@@ -2,22 +2,8 @@
 
 ---
 
-⚡️ Swift: x.x 📱 iOS 12.0 🌎 [API Docs](http://linktoswaggerdocs)
+⚡️ Swift: 5.2 📱 iOS 12.0 🌎 [API Docs](https://www.flickr.com/services/api/)
 
 ---
 
-Project description in 1-5 sentences.
-
-[Screenshots]
-
-## Structure
-
-TODO
-
-## Documentation
-
-Where do I find API docs, wireframes, etc.?
-
-## Bitrise
-
-Is Bitrise CI setup?
+Searching for flickr images with a tag.
