@@ -1,3 +1,5 @@
+![Master](https://github.com/MSWagner/flickr-photo-search-app/workflows/Master/badge.svg?branch=master) ![Develop](https://github.com/MSWagner/flickr-photo-search-app/workflows/Develop/badge.svg?branch=develop)
+
 # FlickrPhotoSearchApp (Research Project)
 
 ---
