@@ -11,4 +11,9 @@ import Foundation
 public struct Photo: Codable {
     public let url_sq: URL
     public let title: String
+
+    public init(title: String, url_sq: URL) {
+        self.title = title
+        self.url_sq = url_sq
+    }
 }

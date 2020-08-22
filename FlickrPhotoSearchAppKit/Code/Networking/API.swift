@@ -29,7 +29,7 @@ public class API {
                 ],
                 rootKeys: ["photos", "photo"],
                 shouldStub: Config.API.stubRequests,
-                stub: StubResponse(statusCode: 200, data: Stub(fileName: tag).jsonData(), delay: 10)
+                stub: Config.API.stubRequests ? StubResponse(statusCode: 200, data: Stub(fileName: tag).jsonData(), delay: 10) : nil
             )
         }
     }
