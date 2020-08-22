@@ -1,4 +1,4 @@
-# FlickrPhotoSearchApp
+# FlickrPhotoSearchApp (Research Project)
 
 ---
 
@@ -6,4 +6,4 @@
 
 ---
 
-Searching for flickr images with a tag and show the page in a tableView. Includes UI tests for refreshing and searching.
+Searching for flickr images with a tag and show the page in a tableView. Includes UI tests, fastlane and github action workflows.
