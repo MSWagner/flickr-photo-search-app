@@ -1,0 +1,55 @@
+/* Locale: de */
+
+/* No comment provided by engineer. */
+"navigation_bar_refresh" = "Aktualisieren";
+
+/* No comment provided by engineer. */
+"navigation_bar_new_search" = "Neue Suche";
+
+/* No comment provided by engineer. */
+"buttons_sorting" = "Title sortieren";
+
+/* No comment provided by engineer. */
+"global_cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"global_delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"global_done" = "Erledigt";
+
+/* No comment provided by engineer. */
+"global_empty_title" = "Keine Daten vorhanden.";
+
+/* No comment provided by engineer. */
+"global_error_title" = "Fehler beim Laden der Daten";
+
+/* No comment provided by engineer. */
+"global_filter_empty_title" = "Keine Daten vorhanden. Bitte passen Sie die Filtereinstellungen an.";
+
+/* No comment provided by engineer. */
+"global_loading_title" = "Daten werden geladen";
+
+/* No comment provided by engineer. */
+"global_ok" = "Ok";
+
+/* No comment provided by engineer. */
+"global_reload" = "Aktualisieren";
+
+/* No comment provided by engineer. */
+"global_retry_title" = "Bitte versuchen Sie es erneut.";
+
+/* No comment provided by engineer. */
+"global_unknown_title" = "N/A";
+
+/* No comment provided by engineer. */
+"network_error_generic" = "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.";
+
+/* No comment provided by engineer. */
+"network_error_loading_failed" = "Daten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.";
+
+/* No comment provided by engineer. */
+"network_error_no_connection" = "Keine Netzwerkverbindung. Bitte versuchen Sie es später erneut.";
+
+/* No comment provided by engineer. */
+"network_error_posting_failed" = "Daten konnten nicht übertragen werden. Bitte versuchen Sie es später erneut.";

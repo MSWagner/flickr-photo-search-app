@@ -189,7 +189,7 @@ extension FlickrPhotoSearchViewController: StatefulViewController {
         })
 
         let emptyView: EmptyStateView? = EmptyStateView.loadFromNib()
-        self.emptyView = emptyView?.prepareForDisplay(with: Strings.Global.emptyTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
+        self.emptyView = emptyView?.prepareForDisplay(with: Strings.Global.filterEmptyTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
             self?.reloadImages()
         })
     }

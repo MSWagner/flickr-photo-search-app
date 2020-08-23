@@ -20,7 +20,7 @@ public class Strings {
 
     public struct Buttons {
         /// Sorting
-        public static let sorting = Strings.localized("buttons_sorting", value: "Sorting with titles")
+        public static let sorting = Strings.localized("buttons_sorting", value: "Sort Titles")
     }
 
     public struct Global {

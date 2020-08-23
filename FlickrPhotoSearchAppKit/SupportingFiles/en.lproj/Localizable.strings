@@ -1,0 +1,55 @@
+/* Locale: en */
+
+/* No comment provided by engineer. */
+"navigation_bar_refresh" = "Refresh";
+
+/* No comment provided by engineer. */
+"navigation_bar_new_search" = "New Search";
+
+/* No comment provided by engineer. */
+"buttons_sorting" = "Sort titles";
+
+/* No comment provided by engineer. */
+"global_cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"global_delete" = "Delete";
+
+/* No comment provided by engineer. */
+"global_done" = "Done";
+
+/* No comment provided by engineer. */
+"global_empty_title" = "No data available.";
+
+/* No comment provided by engineer. */
+"global_error_title" = "Error loading data";
+
+/* No comment provided by engineer. */
+"global_filter_empty_title" = "No data available. Please change the filter-settings.";
+
+/* No comment provided by engineer. */
+"global_loading_title" = "Data is loading";
+
+/* No comment provided by engineer. */
+"global_ok" = "Ok";
+
+/* No comment provided by engineer. */
+"global_reload" = "Reload";
+
+/* No comment provided by engineer. */
+"global_retry_title" = "Please try again.";
+
+/* No comment provided by engineer. */
+"global_unknown_title" = "N/A";
+
+/* No comment provided by engineer. */
+"network_error_generic" = "An error occured. Please try again later.";
+
+/* No comment provided by engineer. */
+"network_error_loading_failed" = "Data could not be loaded. Please try again later.";
+
+/* No comment provided by engineer. */
+"network_error_no_connection" = "No network connection. Please try again later.";
+
+/* No comment provided by engineer. */
+"network_error_posting_failed" = "Data couldn't be transmitted. Please try again later.";

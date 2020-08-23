@@ -30,6 +30,8 @@
 		D018D109EE1C2698CCE79036 /* Fetch in Frameworks */ = {isa = PBXBuildFile; productRef = 4F505C494163E6ECFB5C2239 /* Fetch */; };
 		D31C66EAA16CF92DA224F4AB /* ReactiveSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332F3DE32DFF449C4E17B71 /* ReactiveSwift+Extensions.swift */; };
 		D3B33B5424F1891500354C39 /* SearchBar+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B33B5324F1891500354C39 /* SearchBar+Setup.swift */; };
+		D3B33B8824F2DA1300354C39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3B33B8A24F2DA1300354C39 /* Localizable.strings */; };
+		D3B33B8D24F2DE8300354C39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3B33B8A24F2DA1300354C39 /* Localizable.strings */; };
 		D3B7936724ED91580074964C /* FlickrPhotoSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7936624ED91580074964C /* FlickrPhotoSearchViewController.swift */; };
 		D3B7936924ED96320074964C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7936824ED96320074964C /* Assets.swift */; };
 		D3B7936C24ED98640074964C /* FlickrPhotoSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7936B24ED98640074964C /* FlickrPhotoSearchViewModel.swift */; };
@@ -127,10 +129,11 @@
 		9D1DEC1E6A8794F30ABF6509 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		9F4200504DCE57076245072C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		A049F6895FD4F50B6D237B5E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		BB1FEFE1F0F90EBFEE2E7E9F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		C81BCB87D4A07EBD0A0D2CE3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CE757A1A8B0588956FD8256C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D3B33B5324F1891500354C39 /* SearchBar+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBar+Setup.swift"; sourceTree = "<group>"; };
+		D3B33B8924F2DA1300354C39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3B33B8C24F2DA5400354C39 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3B7936624ED91580074964C /* FlickrPhotoSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoSearchViewController.swift; sourceTree = "<group>"; };
 		D3B7936824ED96320074964C /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		D3B7936B24ED98640074964C /* FlickrPhotoSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoSearchViewModel.swift; sourceTree = "<group>"; };
@@ -224,7 +227,6 @@
 				6C7ADF438F8DCF93BD19A95C /* AppCoordinator.swift */,
 				9152FF8B5CC8791E70B5B2C5 /* AppDelegate.swift */,
 				208E6687681B7B9323DF14FA /* Appearance.swift */,
-				60E262B64A15BD52E7F908CC /* Controllers */,
 				7A26989AFB4EEF04AFF6E11B /* Coordinators */,
 				06E4E08650419B9D1C7B08EA /* Extensions */,
 				6B6FD5347C4B3E1AB45C817A /* Features */,
@@ -284,14 +286,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		60E262B64A15BD52E7F908CC /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BB1FEFE1F0F90EBFEE2E7E9F /* .gitkeep */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		64EBE08B265ECCA08B927738 /* Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +311,7 @@
 		6E82A7A71E409FC49351FA4C /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				D3B33B8A24F2DA1300354C39 /* Localizable.strings */,
 				66AF2FADD29C579027138625 /* FlickrPhotoSearchAppKit.h */,
 				884D56EB42EF6306C2845EBB /* Info.plist */,
 			);
@@ -611,6 +606,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 744D2A37EE8BEDDCA76C5B87;
 			packageReferences = (
@@ -640,6 +636,7 @@
 				D3B7937624ED9C3F0074964C /* EmptyStateView.xib in Resources */,
 				55E6480D310804B033301FF4 /* Assets.xcassets in Resources */,
 				D3B7937924ED9C3F0074964C /* LoadingStateView.xib in Resources */,
+				D3B33B8D24F2DE8300354C39 /* Localizable.strings in Resources */,
 				B3397281960DE02C99EC54B3 /* LaunchScreen.storyboard in Resources */,
 				2F774D9B47C4D890ACBC22C0 /* Main.storyboard in Resources */,
 				D3B7937524ED9C3F0074964C /* ErrorStateView.xib in Resources */,
@@ -667,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CECE1024F08B00006D5389 /* Austria.json in Resources */,
+				D3B33B8824F2DA1300354C39 /* Localizable.strings in Resources */,
 				8BB602789D295C71CF10F5F3 /* Halloween.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -801,6 +799,15 @@
 				30CDCE930628E0A50501F238 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D3B33B8A24F2DA1300354C39 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3B33B8924F2DA1300354C39 /* en */,
+				D3B33B8C24F2DA5400354C39 /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		F2EC5708A240DC2A671BA906 /* LaunchScreen.storyboard */ = {
