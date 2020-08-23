@@ -4,7 +4,7 @@ import UIKit
 
 enum Storyboard: String {
     case launchScreen = "LaunchScreen"
-    case main = "Main"
+    case flickrPhotoSearch = "FlickrPhotoSearch"
     /// ... your storyboard names
 }
 

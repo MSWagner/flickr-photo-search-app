@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ipN-Mq-dOA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ipN-Mq-dOA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" name="Background"/>
                             </tableView>
@@ -55,6 +55,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exh-cR-3bW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-529" y="-417"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="PfI-HZ-sRa">
+            <objects>
+                <viewController storyboardIdentifier="ImageDetailViewController" id="AvH-W4-Yis" customClass="ImageDetailViewController" customModule="FlickrPhotoSearchApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="erl-Uy-mGu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="Iws-qq-Mda">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kgI-M7-iMj">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kgI-M7-iMj" secondAttribute="bottom" id="5ke-ne-4G1"/>
+                                    <constraint firstItem="kgI-M7-iMj" firstAttribute="centerX" secondItem="Iws-qq-Mda" secondAttribute="centerX" id="BEq-4i-22L"/>
+                                    <constraint firstItem="kgI-M7-iMj" firstAttribute="top" secondItem="Iws-qq-Mda" secondAttribute="top" id="XCF-Dl-wyb"/>
+                                    <constraint firstItem="kgI-M7-iMj" firstAttribute="leading" secondItem="Iws-qq-Mda" secondAttribute="leading" id="evf-v5-gin"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgI-M7-iMj" secondAttribute="trailing" id="fub-A4-u1W"/>
+                                    <constraint firstItem="kgI-M7-iMj" firstAttribute="centerY" secondItem="Iws-qq-Mda" secondAttribute="centerY" id="hAO-ai-n3B"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="JlI-Zc-sg7"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="DdT-4Q-Lnc"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Iws-qq-Mda" firstAttribute="leading" secondItem="tNW-49-jek" secondAttribute="leading" id="S3i-xx-zcl"/>
+                            <constraint firstItem="tNW-49-jek" firstAttribute="bottom" secondItem="Iws-qq-Mda" secondAttribute="bottom" id="Zdm-Ju-87O"/>
+                            <constraint firstItem="Iws-qq-Mda" firstAttribute="top" secondItem="tNW-49-jek" secondAttribute="top" id="kOp-oe-Gv6"/>
+                            <constraint firstItem="tNW-49-jek" firstAttribute="trailing" secondItem="Iws-qq-Mda" secondAttribute="trailing" id="ygl-K1-uV0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tNW-49-jek"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailImageView" destination="kgI-M7-iMj" id="viw-Ji-m7L"/>
+                        <outlet property="scrollView" destination="Iws-qq-Mda" id="ctZ-Uz-Nn2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VmQ-HC-ozg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="646" y="-418"/>
         </scene>
     </scenes>
     <resources>

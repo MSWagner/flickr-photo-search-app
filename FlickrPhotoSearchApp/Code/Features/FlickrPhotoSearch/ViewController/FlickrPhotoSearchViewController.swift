@@ -28,19 +28,28 @@ class FlickrPhotoSearchViewController: UIViewController {
 
     private let searchController = UISearchController(searchResultsController: nil)
 
+    // MARK: - Closures
+
+    var didPressOnPhoto: ((Photo) -> Void)?
+
     // MARK: - DataSource
 
     private lazy var dataSource: DataSource = {
         return DataSource(cellDescriptors: [
             ImageTitleCell.cellDescriptor
                 .height { 60 }
+                .didSelect { [weak self] (photo, _) -> SelectionResult in
+                    self?.didPressOnPhoto?(photo)
+
+                    return .deselect
+                }
         ])
     }()
 
     // MARK: - LifeCycle
 
     static func create(viewModel: FlickrPhotoSearchViewModel) -> FlickrPhotoSearchViewController {
-        let vc = UIStoryboard(.main).instantiateViewController(self)
+        let vc = UIStoryboard(.flickrPhotoSearch).instantiateViewController(self)
 
         vc.viewModel = viewModel
 
