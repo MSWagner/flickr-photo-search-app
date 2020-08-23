@@ -38,7 +38,7 @@ class ImageTitleCell: UITableViewCell {
     func configure(with photo: Photo) {
         titleLabel.text = photo.title
 
-        photoImageView.af.setImage(withURL: photo.url_sq, placeholderImage: Asset.photoPlaceholder.image)
+        photoImageView.af.setImage(withURL: photo.thumbnailURL, placeholderImage: Asset.photoPlaceholder.image)
     }
 }
 

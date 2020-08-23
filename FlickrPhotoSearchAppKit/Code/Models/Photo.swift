@@ -9,11 +9,20 @@
 import Foundation
 
 public struct Photo: Codable {
-    public let url_sq: URL
+
+    // MARK: - Properties
+
     public let title: String
 
-    public init(title: String, url_sq: URL) {
-        self.title = title
-        self.url_sq = url_sq
+    public let thumbnailURL: URL
+    public let imageURL: URL?
+
+    // MARK: - CodingKeys
+
+    enum CodingKeys: String, CodingKey {
+        case title
+
+        case thumbnailURL = "url_sq"
+        case imageURL = "url_o"
     }
 }
