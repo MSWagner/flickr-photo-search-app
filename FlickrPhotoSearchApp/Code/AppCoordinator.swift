@@ -7,7 +7,7 @@ class AppCoordinator: Coordinator {
     static let shared = AppCoordinator()
     
     var window: UIWindow!
-    let mainCoordinator = MainCoordinator()
+    let mainCoordinator = FlickrPhotoSearchCoordinator()
     
     func start(window: UIWindow) {
         self.window = window
