@@ -30,7 +30,7 @@ class FlickrPhotoSearchCoordinator: NavigationCoordinator {
     // MARK: - Navigation
 
     private func showImageDetailView(with photo: Photo) {
-        let vc = ImageDetailViewController.create(imageURL: photo.url_sq, title: photo.title)
+        let vc = ImageDetailViewController.create(imageURL: photo.imageURL ?? photo.thumbnailURL, title: photo.title)
 
         push(vc, animated: true)
     }

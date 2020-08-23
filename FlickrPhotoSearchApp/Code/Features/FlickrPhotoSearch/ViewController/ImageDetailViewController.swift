@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import AlamofireImage
+import StatefulViewController
+import FlickrPhotoSearchAppKit
 
 class ImageDetailViewController: UIViewController {
 
@@ -16,9 +18,7 @@ class ImageDetailViewController: UIViewController {
     
     @IBOutlet weak var detailImageView: UIImageView!
 
-    private var image: UIImage?
-
-    private var imageURL: URL?
+    private var imageURL: URL!
 
     // MARK: - LifeCycle
 
@@ -35,12 +35,14 @@ class ImageDetailViewController: UIViewController {
         super.viewDidLoad()
 
         setupScrollView()
+        setupStatefulViews()
+        loadImage()
+    }
 
-        detailImageView.image = image
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 
-        if let url = imageURL {
-            detailImageView.af.setImage(withURL: url, placeholderImage: Asset.photoPlaceholder.image)
-        }
+        detailImageView.af.cancelImageRequest()
     }
 
     // MARK: - Setup
@@ -51,6 +53,17 @@ class ImageDetailViewController: UIViewController {
         scrollView.maximumZoomScale = 10
         scrollView.zoomScale = 1
     }
+
+    // MARK: - Load Image
+
+    private func loadImage() {
+        detailImageView.af.cancelImageRequest()
+
+        startLoading()
+        detailImageView.af.setImage(withURL: imageURL) { [weak self] (response) in
+            self?.endLoading(animated: true, error: response.error)
+        }
+    }
 }
 
 // MARK: - UIScrollViewDelegate
@@ -59,5 +72,29 @@ extension ImageDetailViewController: UIScrollViewDelegate {
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.detailImageView
+    }
+}
+
+// MARK: - StatefulViewController
+
+extension ImageDetailViewController: StatefulViewController {
+
+    private func setupStatefulViews() {
+        let loadingView: LoadingStateView? = LoadingStateView.loadFromNib()
+        self.loadingView = loadingView?.prepareForDisplay(with: Strings.Global.loadingTitle)
+
+        let errorView: ErrorStateView? = ErrorStateView.loadFromNib()
+        self.errorView = errorView?.prepareForDisplay(with: Strings.Global.errorTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
+            self?.loadImage()
+        })
+
+        let emptyView: EmptyStateView? = EmptyStateView.loadFromNib()
+        self.emptyView = emptyView?.prepareForDisplay(with: Strings.Global.filterEmptyTitle, retryTitle: Strings.Global.retryTitle, retryClosure: { [weak self] in
+            self?.loadImage()
+        })
+    }
+
+    func hasContent() -> Bool {
+        return detailImageView.image != nil
     }
 }
