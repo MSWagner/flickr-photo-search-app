@@ -25,4 +25,11 @@ public struct Photo: Codable {
         case thumbnailURL = "url_sq"
         case imageURL = "url_o"
     }
+
+    public init(title: String, url_sq: URL, url_o: URL? = nil) {
+        self.title = title
+
+        self.imageURL = url_o
+        self.thumbnailURL = url_sq
+    }
 }
