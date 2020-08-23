@@ -6,7 +6,7 @@
 
 ---
 
-Searching for flickr images with a tag and show the page in a tableView. Includes UI tests, fastlane and github action workflows.
+Searching for flickr images with a tag. Includes UI and Unit tests, and using fastlane and Github Actions as CI.
 
 ### Screenshots
 
