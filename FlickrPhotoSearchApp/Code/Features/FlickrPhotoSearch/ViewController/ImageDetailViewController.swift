@@ -1,9 +1,9 @@
 //
 //  ImageDetailViewController.swift
-//  Toolsense
+//  FlickrPhotoSearchApp
 //
-//  Created by Matthias Wagner on 25.02.20.
-//  Copyright © 2020 aaa - all about apps Gmbh. All rights reserved.
+//  Created by Matthias Wagner on 19.08.20.
+//  Copyright © 2020 Michael Wagner. All rights reserved.
 //
 
 import UIKit

@@ -10,9 +10,9 @@ Searching for flickr images with a tag. Includes UI and Unit tests, and using fa
 
 ### Screenshots
 
-| Start                                                                                                               | Searching                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| <img src="https://github.com/MSWagner/flickr-photo-search-app/blob/master/Documentation/Halloween.jpg" width="200"> | <img src="https://github.com/MSWagner/flickr-photo-search-app/blob/master/Documentation/Searching.jpg" width="200"> |
+| Start                                                                                                               | Searching                                                                                                           | Zoomable DetailView                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/MSWagner/flickr-photo-search-app/blob/master/Documentation/Halloween.jpg" width="200"> | <img src="https://github.com/MSWagner/flickr-photo-search-app/blob/master/Documentation/Searching.jpg" width="200"> | <img src="https://github.com/MSWagner/flickr-photo-search-app/blob/master/Documentation/DetailView.jpg" width="200"> |
 
 ## License
 
