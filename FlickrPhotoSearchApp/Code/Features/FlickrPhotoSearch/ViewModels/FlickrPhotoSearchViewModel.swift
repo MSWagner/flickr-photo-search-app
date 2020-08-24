@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Fetch
+import Combine
 import FlickrPhotoSearchAppKit
 
 class FlickrPhotoSearchViewModel {

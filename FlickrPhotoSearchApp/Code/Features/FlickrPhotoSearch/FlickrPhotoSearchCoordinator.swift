@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import FlickrPhotoSearchAppKit
 
 class FlickrPhotoSearchCoordinator: NavigationCoordinator {
@@ -30,8 +31,17 @@ class FlickrPhotoSearchCoordinator: NavigationCoordinator {
     // MARK: - Navigation
 
     private func showImageDetailView(with photo: Photo) {
-        let vc = ImageDetailViewController.create(imageURL: photo.imageURL ?? photo.thumbnailURL, title: photo.title)
+    
+        if #available(iOS 13.0, *) {
+            let imageDetailView = ImageDetailView(viewModel: ImageDetailViewModel(photo: photo))
+            let hostingController = UIHostingController(rootView: imageDetailView)
+            hostingController.title = photo.title
 
-        push(vc, animated: true)
+            push(hostingController, animated: true)
+        } else {
+            let vc = ImageDetailViewController.create(imageURL: photo.imageURL ?? photo.thumbnailURL, title: photo.title)
+
+            push(vc, animated: true)
+        }
     }
 }
