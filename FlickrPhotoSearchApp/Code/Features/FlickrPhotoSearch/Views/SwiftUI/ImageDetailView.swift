@@ -16,10 +16,14 @@ protocol ImageAble: StateAble {
     var image: UIImage? { get }
 }
 
+protocol ImageReloadAble {
+    func reloadImage()
+}
+
 // MARK: - ImageDetailView
 
 @available(iOS 13.0, *)
-struct ImageDetailView<ImageViewModel>: View where ImageViewModel: ImageAble {
+struct ImageDetailView<ImageViewModel>: View where ImageViewModel: ImageAble, ImageViewModel: ImageReloadAble {
 
     @ObservedObject var viewModel: ImageViewModel
 
@@ -29,13 +33,16 @@ struct ImageDetailView<ImageViewModel>: View where ImageViewModel: ImageAble {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
+        .onTapGesture {
+            self.viewModel.reloadImage()
+        }
     }
 }
 
 // MARK: - Preview
 
 @available(iOS 13.0, *)
-class TestImageDetailViewModel: ImageAble {
+class TestImageDetailViewModel: ImageAble, ImageReloadAble {
 
     var state: StateFulViewState = .content
 
@@ -46,6 +53,8 @@ class TestImageDetailViewModel: ImageAble {
     var image: UIImage? = UIImage(systemName: "clock.fill")
 
     init() {}
+
+    func reloadImage() {}
 }
 
 @available(iOS 13.0, *)

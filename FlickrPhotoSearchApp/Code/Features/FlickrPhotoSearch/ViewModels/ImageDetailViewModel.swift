@@ -13,7 +13,7 @@ import Combine
 import FlickrPhotoSearchAppKit
 
 @available(iOS 13.0, *)
-class ImageDetailViewModel: ImageAble {
+class ImageDetailViewModel: ImageAble, ImageReloadAble {
 
     // MARK: - Properties
 
@@ -48,6 +48,7 @@ class ImageDetailViewModel: ImageAble {
 
         state = .loading
         downloader.download(request) { [weak self] response in
+    
             switch response.result {
             case .success(let image):
                 self?.image = image
@@ -55,6 +56,16 @@ class ImageDetailViewModel: ImageAble {
             case .failure:
                 self?.state = .error
             }
+        }
+    }
+
+    func reloadImage() {
+        switch state {
+        case .loading, .content:
+            return
+
+        case .empty, .error:
+            loadImage()
         }
     }
 }

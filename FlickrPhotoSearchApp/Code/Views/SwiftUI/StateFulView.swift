@@ -71,6 +71,9 @@ struct StateFulView<Content, StateViewModel>: View where Content: View, StateVie
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
