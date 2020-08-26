@@ -44,9 +44,7 @@ extension UISearchBar {
                         backgroundView?.layer.masksToBounds = true
                     }
                 }
-
             }
         }
     }
-
 }

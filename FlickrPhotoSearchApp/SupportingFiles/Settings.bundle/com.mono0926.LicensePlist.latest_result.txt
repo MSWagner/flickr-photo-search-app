@@ -8,6 +8,8 @@ name: Differ, nameSpecified: Differ, owner: tonyarnold, version: 1.4.5
 
 name: Fetch, nameSpecified: Fetch, owner: allaboutapps, version: 2.3.0
 
+name: Mocker, nameSpecified: Mocker, owner: WeTransfer, version: 2.3.0
+
 name: ReactiveSwift, nameSpecified: ReactiveSwift, owner: ReactiveCocoa, version: 6.3.0
 
 name: StatefulViewController, nameSpecified: StatefulViewController, owner: allaboutapps, version: 5.1.0

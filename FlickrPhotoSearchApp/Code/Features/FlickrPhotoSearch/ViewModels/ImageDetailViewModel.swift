@@ -19,7 +19,7 @@ class ImageDetailViewModel: ImageAble, ImageReloadAble {
 
     private let photo: Photo
 
-    private var downloader = ImageDownloader()
+    private var downloader: ImageDownloader
 
     // MARK: - ImageAble Properties
 
@@ -35,8 +35,9 @@ class ImageDetailViewModel: ImageAble, ImageReloadAble {
 
     // MARK: - Init
 
-    init(photo: Photo) {
+    init(photo: Photo, imageDownloader: ImageDownloader = ImageDownloader()) {
         self.photo = photo
+        self.downloader = imageDownloader
 
         loadImage()
     }
